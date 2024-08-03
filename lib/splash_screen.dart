@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:my_project/search_screen.dart';
 // import 'package:my_project/search_screen.dart';
 
 class Splash extends StatefulWidget {
@@ -21,9 +22,10 @@ class _SplashState extends State<Splash> {
   navigateToHome() async {
     await Future.delayed(const Duration(milliseconds: 5000)).then((value) => {
           Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const Text("hello")),
-          )
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Search(),
+              ))
         });
   }
 
