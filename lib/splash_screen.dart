@@ -17,6 +17,7 @@ class _SplashState extends State<Splash> {
     navigateToHome();
   }
 
+// this is a function that will navigate to home screen after some random time delay
   navigateToHome() async {
     await Future.delayed(const Duration(milliseconds: 5000)).then((value) => {
           Navigator.pushReplacement(
@@ -27,6 +28,7 @@ class _SplashState extends State<Splash> {
   }
 
   @override
+  //loading screen
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
@@ -35,8 +37,10 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            //Search A holic logo
             Image(image: AssetImage("images/logo3.png"), width: 240),
             SizedBox(height: 35),
+            //loading animation
             SpinKitChasingDots(
               color: Colors.black,
               size: 40.0,
