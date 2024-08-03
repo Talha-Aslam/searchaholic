@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 import 'package:my_project/card.dart';
-import 'package:my_project/firebase_database.dart';
 import 'package:my_project/navbar.dart';
 
 class Search extends StatefulWidget {
@@ -33,7 +32,6 @@ class _SearchState extends State<Search> {
     //store current scaffold widget key
     _scaffoldKey = GlobalKey<ScaffoldState>();
     setProducts();
-    setLocation();
   }
 
   @override
@@ -74,9 +72,7 @@ class _SearchState extends State<Search> {
                               padding: const EdgeInsets.all(12.0),
                               child: GestureDetector(
                                   onTap: () {
-                                    // _scaffoldKey.currentState!.openDrawer();
-
-                                    // drwaer element
+                                    _scaffoldKey.currentState!.openDrawer();
                                   },
                                   child: const Icon(Icons.menu_open_sharp,
                                       size: 35, color: Colors.white))),
@@ -85,37 +81,7 @@ class _SearchState extends State<Search> {
                             child: PopupMenuButton(
                               icon: const Icon(Icons.more_horiz,
                                   size: 25, color: Colors.white),
-                              itemBuilder: (context) => [
-                                // PopupMenuItem(
-                                //   child: Text("Help ?"),
-                                //   onTap: () {
-                                //     showDialog(
-                                //       context: context,
-                                //       builder: (BuildContext context) {
-                                //         return StatefulBuilder(
-                                //           builder: (BuildContext context,
-                                //               StateSetter setState) {
-                                //             return AlertDialog(
-                                //               title: const Text("Help"),
-                                //               content: const Text(
-                                //                   "This is a help dialog box"),
-                                //               actions: [
-                                //                 TextButton(
-                                //                   onPressed: () {
-                                //                     Navigator.of(context).pop();
-                                //                   },
-                                //                   child: const Text("Close"),
-                                //                 ),
-                                //               ],
-                                //             );
-                                //           },
-                                //         );
-                                //       },
-                                //     );
-                                //   },
-                                //   value: 1,
-                                // ),
-                              ],
+                              itemBuilder: (context) => [],
                             ),
                           ),
                         ],
@@ -204,7 +170,6 @@ class _SearchState extends State<Search> {
                 padding: const EdgeInsets.only(top: 259.0, left: 30),
                 child: SizedBox(
                   child: Row(
-                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
                       const Icon(
                         Icons.location_on,
@@ -234,50 +199,6 @@ class _SearchState extends State<Search> {
                 backgroundImage: AssetImage("images/man.png"),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 250.0, left: 80),
-            //   // ignore: avoid_unnecessary_containers
-            //   child: Container(
-            //     child: ToggleSwitch(
-            //       minWidth: 110.0,
-            //       cornerRadius: 20.0,
-            //       activeBgColors: [
-            //         [Colors.blue],
-            //         [Colors.blue],
-            //       ],
-            //       activeFgColor: Colors.white,
-            //       inactiveBgColor: Colors.green,
-            //       inactiveFgColor: Colors.white,
-            //       initialLabelIndex: 0,
-            //       totalSwitches: 2,
-            //       labels: ['All Products', 'Nearby'],
-            //       radiusStyle: true,
-            //       onToggle: (index) {
-            //         searchQuery(index!);
-            //       },
-            //     ),
-            //   ),
-            // ),
-
-            // Padding(
-            //   padding: const EdgeInsets.only(left: 80, bottom: 160),
-            //   child: FlutterSwitch(
-            //     width: 105.0,
-            //     height: 40.0,
-            //     valueFontSize: 25.0,
-            //     toggleSize: 45.0,
-            //     value: status1,
-            //     borderRadius: 30.0,
-            //     padding: 8.0,
-            //     showOnOff: true,
-            //     onToggle: (val) {
-            //       setState(() {
-            //         status1 = val;
-            //         print(status1);
-            //       });
-            //     },
-            //   ),
-            // ),
 
             Padding(
               padding: const EdgeInsets.only(top: 250.0),
@@ -289,41 +210,26 @@ class _SearchState extends State<Search> {
                     if (status == 0) {
                       // ignore: avoid_print
                       print("---------> ALL Products");
-                      // return CardView(
-                      //   productList: searchedProducts[index],
-                      // );
+                      return CardView(
+                        productList: searchedProducts[index],
+                      );
                     } else {
                       // ignore: avoid_print
                       print("---------> NearBy Products");
 
-                      // return CardView(
-                      //   productList: nearbyProducts[index],
-                      // );
+                      return CardView(
+                        productList: nearbyProducts[index],
+                      );
                     }
-                    return null;
                   }),
             )
           ]),
         ));
   }
 
-  Future<void> setLocation() async {
-    var position = await Flutter_api().getPosition();
-    var address =
-        await Flutter_api().getAddress(position.latitude, position.longitude);
-
-    setState(() {
-      fullAddress = address;
-      txt.text = fullAddress;
-      userlat = position.latitude;
-      userlon = position.longitude;
-    });
-  }
-
   //this gona set the list of all the products
   Future<void> setProducts() async {
-    var products = await Flutter_api().getAllProducts();
-    setState(() {
+    var products = setState(() {
       allProducts = products;
       searchedProducts = products;
     });
