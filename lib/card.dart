@@ -12,8 +12,8 @@ class CardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-      height: 100,
+      margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+      height: 130,
       width: MediaQuery.of(context).size.width * 0.85,
       decoration: BoxDecoration(
           color: Colors.white,
