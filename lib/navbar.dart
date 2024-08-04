@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/login_screen.dart';
+import 'package:my_project/profile.dart';
 
 // import 'package:my_project/login_screen.dart';
 // import 'package:my_project/profile.dart';
@@ -71,11 +73,11 @@ class Navbar extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.person, size: 30),
           onTap: () {
-            // Navigator.push(context, MaterialPageRoute(
-            //   builder: (BuildContext context) {
-            //     return const Profile();
-            //   },
-            // ));
+            Navigator.push(context, MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const Profile();
+              },
+            ));
           },
           title: const Text(
             'Profile',
@@ -88,10 +90,10 @@ class Navbar extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.login, size: 30),
           onTap: () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (BuildContext context) {
-            //   return const Login();
-            // }));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return const Login();
+            }));
           },
           title: const Text(
             'Login',
