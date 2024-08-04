@@ -127,6 +127,15 @@ class DummyData {
       'Quantity': 170
     },
     {
+      'Name': 'Tramadol',
+      'StoreName': 'Fazals pharmacy',
+      'StoreEmail': 'pharmacy120@example.com',
+      'Latitude': 19.4326,
+      'Longitude': -99.1332,
+      'Price': 11.99,
+      'Quantity': 170
+    },
+    {
       'Name': 'Losartan',
       'StoreName': 'PharmaHealth',
       'StoreEmail': 'pharmacy15@example.com',
